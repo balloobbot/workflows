@@ -11,7 +11,7 @@ The official Home Assistant apps, one repository per app, build and publish thei
 
 They build with the actions from [home-assistant/builder](https://github.com/home-assistant/builder), pinned to a builder release.
 
-`app-deploy.yaml` only runs for repositories of the `home-assistant` organization.
+`app-deploy.yaml` runs for repositories of the `home-assistant` organization and for `OHF-Voice/app-voice`.
 Other projects can use the builder actions in their own workflows.
 
 Each `app-deploy.yaml` run publishes container images and notifies app store repositories:
@@ -20,6 +20,7 @@ Each `app-deploy.yaml` run publishes container images and notifies app store rep
 - A GitHub pre-release publishes images tagged with the version and `beta`.
 - A GitHub release publishes images tagged with the version and `stable`.
   It then sends an `update` dispatch event to the app store repository, `home-assistant/apps` by default.
+- `repository_owner` sets the owner of the app store repositories. It defaults to the calling repository owner. Set it to `home-assistant` for Voice.
 - `repository_edge` and `repository_beta` name optional edge and beta app store repositories.
   Set `repository_edge: apps-dev` to notify the development app store; its updater channel remains `edge`, while the GitHub environment and the image tag are `dev`.
 
