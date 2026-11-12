@@ -20,7 +20,8 @@ Each `app-deploy.yaml` run publishes container images and notifies app store rep
 - A GitHub pre-release publishes images tagged with the version and `beta`.
 - A GitHub release publishes images tagged with the version and `stable`.
   It then sends an `update` dispatch event to the app store repository, `home-assistant/apps` by default.
-- `repository_owner` sets the owner of the app store repositories. It defaults to the calling repository owner. Set it to `home-assistant` for Voice.
+- Set `notify: false` to publish images without notifying app store repositories. This does not require `DISPATCH_TOKEN`.
+- `repository_owner` sets the owner of the app store repositories. It defaults to the calling repository owner. Set it when the app store belongs to a different owner.
 - `repository_edge` and `repository_beta` name optional edge and beta app store repositories.
   Set `repository_edge: apps-dev` to notify the development app store; its updater channel remains `edge`, while the GitHub environment and the image tag are `dev`.
 
